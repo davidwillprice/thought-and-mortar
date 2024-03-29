@@ -1,0 +1,40 @@
+{{ 'assessment-section.css' | asset_url | stylesheet_tag }}
+{% liquid
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+%}
+<div class="assessment-section section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+
+</div>
+<script src="{{ 'assessment-section.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "Assessment section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_top_spacing",
+      "default": false,
+      "label": "Remove top spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_bottom_spacing",
+      "default": false,
+      "label": "Remove bottom spacing"
+    }
+  ],
+  "blocks": [
+
+  ],
+  "presets": [
+    {
+      "name": "Assessment Section"
+    }
+  ]
+}
+{% endschema %}
